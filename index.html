@@ -240,15 +240,16 @@
             ✓ Success! You're now on the waitlist. We'll be in touch soon.
         </div>
         
-        <form class="waitlist-form" id="waitlistForm" action="https://formspree.io/f/mjkoangg" method="POST">
-            <input 
-                type="email" 
-                name="email"
-                class="email-input" 
-                placeholder="Email" 
-                id="emailInput"
-                required
-            >
+        <form class="waitlist-form" action="https://formspree.io/f/mjkoangg" method="POST">
+            <label style="display: contents;">
+                <input 
+                    type="email" 
+                    name="email"
+                    class="email-input" 
+                    placeholder="Email" 
+                    required
+                >
+            </label>
             <button type="submit" class="join-btn">Join waitlist</button>
         </form>
         
@@ -319,57 +320,6 @@
         // Update countdown every second
         updateCountdown();
         setInterval(updateCountdown, 1000);
-        
-        document.getElementById('waitlistForm').addEventListener('submit', async function(e) {
-            e.preventDefault();
-            
-            const email = document.getElementById('emailInput').value;
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            
-            if (!emailRegex.test(email)) {
-                alert('Please enter a valid email address.');
-                return;
-            }
-            
-            // Disable button to prevent double submission
-            const button = this.querySelector('.join-btn');
-            const originalText = button.textContent;
-            button.textContent = 'Joining...';
-            button.disabled = true;
-            
-            try {
-                // Send to Formspree
-                const response = await fetch('https://formspree.io/f/mjkoangg', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({ email: email })
-                });
-                
-                if (response.ok) {
-                    // Show success message
-                    document.getElementById('successMessage').classList.add('show');
-                    
-                    // Clear form
-                    document.getElementById('emailInput').value = '';
-                    
-                    // Hide success message after 4 seconds
-                    setTimeout(() => {
-                        document.getElementById('successMessage').classList.remove('show');
-                    }, 4000);
-                } else {
-                    throw new Error('Submission failed');
-                }
-            } catch (error) {
-                alert('Something went wrong. Please try again.');
-                console.error('Error:', error);
-            } finally {
-                // Re-enable button
-                button.textContent = originalText;
-                button.disabled = false;
-            }
-        });
     </script>
 </body>
 </html>
