@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Theioptera - Join Waitlist</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f8fafc;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 16px;
+            padding: 60px 40px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            max-width: 480px;
+            width: 100%;
+            text-align: center;
+            border: 1px solid #e2e8f0;
+        }
+        
+        .logo {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #1a202c;
+            margin-bottom: 12px;
+            letter-spacing: -0.5px;
+        }
+        
+        .subtitle {
+            color: #64748b;
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 40px;
+            max-width: 320px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .waitlist-form {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 32px;
+        }
+        
+        .email-input {
+            flex: 1;
+            padding: 14px 16px;
+            border: 1.5px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 15px;
+            background: #ffffff;
+            transition: all 0.2s ease;
+            color: #1a202c;
+        }
+        
+        .email-input::placeholder {
+            color: #94a3b8;
+        }
+        
+        .email-input:focus {
+            outline: none;
+            border-color: #6366f1;
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+        }
+        
+        .join-btn {
+            background: #c4f82a;
+            color: #1a202c;
+            border: none;
+            padding: 14px 24px;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+            border: 1.5px solid #c4f82a;
+        }
+        
+        .join-btn:hover {
+            background: #bef027;
+            transform: translateY(-1px);
+        }
+        
+        .join-btn:active {
+            transform: translateY(0);
+        }
+        
+        .launch-info {
+            margin-bottom: 32px;
+        }
+        
+        .launch-date {
+            color: #1a202c;
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+        
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-bottom: 8px;
+        }
+        
+        .countdown-item {
+            text-align: center;
+            min-width: 60px;
+        }
+        
+        .countdown-number {
+            display: block;
+            font-size: 24px;
+            font-weight: 700;
+            color: #1a202c;
+            line-height: 1;
+        }
+        
+        .countdown-label {
+            font-size: 12px;
+            color: #64748b;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-top: 4px;
+        }
+        
+        .features {
+            text-align: left;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 32px;
+        }
+        
+        .features-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #1a202c;
+            margin-bottom: 16px;
+            text-align: center;
+        }
+        
+        .feature-list {
+            display: grid;
+            gap: 12px;
+        }
+        
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #64748b;
+            font-size: 14px;
+        }
+        
+        .check-icon {
+            width: 16px;
+            height: 16px;
+            background: #10b981;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 10px;
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+        
+        .success-message {
+            display: none;
+            background: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            border-radius: 8px;
+            padding: 16px;
+            margin-bottom: 24px;
+            color: #166534;
+            font-size: 14px;
+        }
+        
+        .success-message.show {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Mobile responsive */
+        @media (max-width: 640px) {
+            .container {
+                padding: 40px 24px;
+                margin: 10px;
+            }
+            
+            .waitlist-form {
+                flex-direction: column;
+                gap: 12px;
+            }
+            
+            .join-btn {
+                width: 100%;
+            }
+            
+            .logo {
+                font-size: 1.8rem;
+            }
+        }
+        
+        /* Mobile/Focus and Mobile/Default states */
+        @media (max-width: 640px) {
+            .email-input:focus {
+                border-color: #6366f1;
+                box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="logo">Theioptera</h1>
+        <p class="subtitle">Be among the first to experience the future. Get early access when we launch.</p>
+        
+        <div class="success-message" id="successMessage">
+            ✓ Success! You're now on the waitlist. We'll be in touch soon.
+        </div>
+        
+        <form class="waitlist-form" id="waitlistForm">
+            <input 
+                type="email" 
+                class="email-input" 
+                placeholder="Email" 
+                id="emailInput"
+                required
+            >
+            <button type="submit" class="join-btn">Join waitlist</button>
+        </form>
+        
+        <div class="launch-info">
+            <div class="launch-date">Launching September 1st, 2025</div>
+            <div class="countdown" id="countdown">
+                <div class="countdown-item">
+                    <span class="countdown-number" id="days">--</span>
+                    <div class="countdown-label">Days</div>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-number" id="hours">--</span>
+                    <div class="countdown-label">Hours</div>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-number" id="minutes">--</span>
+                    <div class="countdown-label">Minutes</div>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-number" id="seconds">--</span>
+                    <div class="countdown-label">Seconds</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="features">
+            <h3 class="features-title">What you'll get:</h3>
+            <div class="feature-list">
+                <div class="feature-item">
+                    <div class="check-icon">✓</div>
+                    <span>Exclusive early access before public launch</span>
+                </div>
+                <div class="feature-item">
+                    <div class="check-icon">✓</div>
+                    <span>Priority support and onboarding</span>
+                </div>
+                <div class="feature-item">
+                    <div class="check-icon">✓</div>
+                    <span>Special launch pricing and offers</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Launch date: September 1st, 2025
+        const launchDate = new Date('September 1, 2025 00:00:00').getTime();
+        
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = launchDate - now;
+            
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            
+            document.getElementById('days').textContent = days.toString().padStart(2, '0');
+            document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+            
+            if (distance < 0) {
+                document.getElementById('countdown').innerHTML = '<div class="countdown-item"><span class="countdown-number">🎉</span><div class="countdown-label">Launched!</div></div>';
+            }
+        }
+        
+        // Update countdown every second
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+        
+        document.getElementById('waitlistForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById('emailInput').value;
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            
+            if (!emailRegex.test(email)) {
+                alert('Please enter a valid email address.');
+                return;
+            }
+            
+            // Show success message
+            document.getElementById('successMessage').classList.add('show');
+            
+            // Clear form
+            document.getElementById('emailInput').value = '';
+            
+            // Here's where you'd send to your email service
+            console.log('Email submitted:', email);
+            
+            // Hide success message after 4 seconds
+            setTimeout(() => {
+                document.getElementById('successMessage').classList.remove('show');
+            }, 4000);
+        });
+    </script>
+</body>
+</html>
